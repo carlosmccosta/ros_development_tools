@@ -1,0 +1,51 @@
+- Add to the node xml tag the option to attach gdb to the node process
+	(http://wiki.ros.org/roslaunch/Tutorials/Roslaunch%20Nodes%20in%20Valgrind%20or%20GDB)
+	A -> For having node output in a different terminal
+		launch-prefix="terminator -mx gdb --args"
+	B -> For having node output in a different terminal and start without user interaction
+		launch-prefix="terminator -mx gdb -ex run --args"
+	C -> For having node output in the same terminal
+		launch-prefix="gdb --args"
+	D -> For having node output in the same terminal and start without user interaction
+		launch-prefix="gdb -ex run --args"
+	Example:
+		<node name="nodeName" pkg="nodePackage" type="nodeType" output="screen" launch-prefix="terminator -mx gdb --args"/>
+
+- Debug in GDB
+	Useful commands
+		break [file:]function
+			Set a breakpoint at function (in file)
+		run [arglist]
+			Start your program (with arglist, if specified)
+		bt
+			Backtrace: display the program stack
+		print expr
+			Display the value of an expression
+		c
+			Continue running your program (after stopping, e.g. at a breakpoint)
+		next
+			Execute next program line (after stopping); step over any function calls in the line
+		edit [file:]function
+			look at the program line where it is presently stopped
+		list [file:]function
+			type the text of the program in the vicinity of where it is presently stopped
+		step
+			Execute next program line (after stopping); step into any function calls in the line
+		info breakpoints
+			List breakpoints
+		info break
+			List breakpoint numbers.
+		info break breakpoint-number
+			List info about specific breakpoint.
+		info watchpoints
+			List watchpoints
+		info registers
+			List registers in use
+		info threads
+			List threads in use
+		help [name]
+			Show information about GDB command name, or general information about using GDB
+		kill
+			Stop debugging
+		quit
+			Exit from GDB

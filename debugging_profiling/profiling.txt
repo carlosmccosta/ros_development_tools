@@ -1,0 +1,27 @@
+http://wiki.ros.org/DevelopersGuide
+
+ROS profilling:
+http://projects.csail.mit.edu/pr2/wiki/index.php?title=Profiling_Code_in_ROS
+
+
+Profilers:
+http://www.embeddedprofiler.com/Profilers_Comparison
+https://sourceware.org/binutils/docs/gprof/
+http://oprofile.sourceforge.net/about/
+http://valgrind.org/info/tools.html
+https://perf.wiki.kernel.org/index.php/Main_Page
+https://github.com/carlosmccosta/robot_localization_tools/blob/hydro-devel/tools/process_monitor.sh
+
+
+Qt:
+https://wiki.qt.io/Profiling_and_Memory_Checking_Tools
+http://doc.qt.io/qtcreator/creator-cache-profiler.html
+http://doc.qt.io/qtcreator/creator-analyze-mode.html
+http://doc.qt.io/qtcreator/creator-cpu-usage-analyzer.html
+
+
+Eclipse:
+http://wiki.eclipse.org/Linux_Tools_Project/Profiling/User_Guide
+https://wiki.eclipse.org/Linux_Tools_Project/GProf/User_Guide
+https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Developer_Guide/profiling.html
+https://www.eclipsecon.org/2013/sites/eclipsecon.org.2013/files/eclipsecon_profiling_tutorial.pdf

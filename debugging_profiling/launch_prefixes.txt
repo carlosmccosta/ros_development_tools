@@ -1,0 +1,39 @@
+#####################################################################################################################################################
+# Running ROS node within gdb or valgrind (http://wiki.ros.org/roslaunch/Tutorials/Roslaunch%20Nodes%20in%20Valgrind%20or%20GDB)
+#####################################################################################################################################################
+
+
+// Attach gdbserver to ROS node
+// Allows remote debugging
+// -> http://wiki.eclipse.org/CDT/User/FAQ#How_do_I_debug_a_remote_application.3F
+// -> http://doc.qt.io/qtcreator/creator-debugger-operating-modes.html
+launch-prefix="gdbserver localhost:1337"
+
+
+// Attach gdb to ROS node
+launch-prefix="terminator -mx gdb -ex run --args"
+
+
+// Attach callgrind to ROS node for profilling
+// Output file (in ~/.ros/) can be opened with http://kcachegrind.sourceforge.net/html/Home.html
+launch-prefix="terminator -mx valgrind --tool=callgrind --callgrind-out-file=callgrind.out.node_name.%p"
+
+
+// Attach massif to ROS node to monitor memory usage
+// Output file (in ~/.ros/)
+launch-prefix="terminator -mx valgrind --tool=massif --heap=yes --stacks=yes --massif-out-file=massif.out.node_name.%p"
+
+
+// Attach memcheck to ROS node to check for memory leaks
+// Output file (in ~/.ros/)
+launch-prefix="terminator -mx valgrind --tool=memcheck --leak-check=full --show-reachable=yes -v --track-origins=yes --log-file=memcheck.out.node_name.%p"
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+// To execute the nodes in a different window, prepend terminator -mx to the launch prefixes commands
+// Example:
+// Attach gdb to ROS node in a different console window
+launch-prefix="terminator -mx gdb -ex run --args"
+
+// Run ROS node in different window to isolate its output from the other nodes
+launch-prefix="terminator -mx"

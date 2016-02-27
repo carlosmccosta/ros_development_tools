@@ -1,0 +1,41 @@
+########################################################################################################################
+# »»»»» Eclipse code templates for C++
+########################################################################################################################
+
+Eclipse code templates allow automatic insertion of file / class / function layouts.
+It is useful to keep the programming style consistent.
+
+
+##########
+# To change C++ code templates in eclipse
+Window -> Preferences -> C/C++ -> Code Style -> Code Templates
+
+
+»»»»» [C++ file comment.txt]
+Comments -> Files
+
+»»»»» [C++ header.h]
+Files -> C++ Header File -> Default C++ header template
+
+»»»»» [C++ source.cpp]
+Files -> C++ Source File -> Default C++ source template
+
+
+##########
+# To change C++ naming style for variables, functions, classes, files...
+Window -> Preferences -> C/C++ -> Code Style -> Name Style
+
+
+========================================================================================================================
+# »»»»» Useful links
+========================================================================================================================
+
+http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml
+
+http://wiki.ros.org/CppStyleGuide
+http://wiki.ros.org/ROS/Patterns/Conventions
+http://wiki.ros.org/DevelopersGuide
+http://wiki.ros.org/IDEs
+
+http://jbohren.com/articles/gentle-catkin-intro/
+http://jbohren.com/articles/modular-ros-packages/

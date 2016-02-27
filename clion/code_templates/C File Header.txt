@@ -1,0 +1,6 @@
+/**\file ${HEADER_FILENAME}
+ * \brief Description...
+ *
+ * @version 1.0
+ * @author Carlos Miguel Correia da Costa
+ */

@@ -1,0 +1,13 @@
+http://hackaday.com/2009/09/18/how-to-write-udev-rules/
+
+- Find unique info
+udevadm info -q all -n /dev/ttyUSB0
+udevadm info -a -p $(udevadm info -q path -n /dev/ttyUSB0)
+
+- Add rule to /etc/udev/rules.d/
+ex:
+SUBSYSTEM=="tty", ATTRS{idProduct}=="ffee", ATTRS{idVendor}=="04d8", ATTRS{serial}=="00010571", SYMLINK+="relays_cable"
+
+- Restart udev
+sudo service udev restart
+sudo /etc/init.d/udev restart

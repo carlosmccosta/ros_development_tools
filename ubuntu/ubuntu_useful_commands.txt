@@ -1,0 +1,40 @@
+# shutdown
+gnome-session-quit --power-off
+
+
+# monitor
+gnome-system-monitor
+
+
+# status
+indicator-multiload
+
+
+# remove .svn
+find . -depth -name .svn -exec rm -fr {} \;
+
+
+# force update from unauthenticated servers
+sudo apt-get update && sudo apt-get upgrade --allow-unauthenticated
+
+
+# download directory from apache server
+wget --mirror --convert-links --no-parent http://path/to/dir
+
+
+# add application .desktop launcher to app default list
+-> append %F to end of Exec command
+
+
+# clock update daemon (https://help.ubuntu.com/12.04/serverguide/NTP.html)
+sudo apt-get install ntp -y
+sudo /etc/init.d/ntp reload
+
+
+# clock update
+sudo sh -c "echo 'ntpdate ntp.ubuntu.com' > /etc/cron.daily/ntpdate"
+sudo chmod 755 /etc/cron.daily/ntpdate
+
+
+# add ssh key to remote server
+cat ~/.ssh/id_rsa.pub | ssh user@hostname 'cat >> .ssh/authorized_keys'
