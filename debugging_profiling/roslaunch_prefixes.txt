@@ -29,11 +29,12 @@ launch-prefix="terminator -mx gdb -ex run --args"
 ***************************************************************************************************
 // Attach perf to ROS node
 // Output in ~/.ros/
-// Use <perf-report -g -n -i perf.out.node_name.data> to see profile results
+// Use <perf report -n -v -i perf.out.node_name.data> to see profile results
+// For CSV output use <perf report -n -v --field-separator=, --show-total-period --show-info --group --demangle --stdio -i perf.out.node_name.data > perf.out.node_name.data.csv>
 // Compile node with -DCMAKE_BUILD_TYPE=RelWithDebInfo for easier results analysis
 
 # light profiling
-launch-prefix="perf record -g --output=perf.out.node_name.data --"
+launch-prefix="perf record -v --output=perf.out.node_name.data --"
 
 # profiling with detailed call stack calls
 launch-prefix="perf record -g --call-graph dwarf --output=perf.out.node_name.data --"
