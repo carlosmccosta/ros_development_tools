@@ -1,0 +1,38 @@
+
+#######################################################################################################################
+# ROS
+#######################################################################################################################
+
+
+# <ROS local network setup>
+#export ROS_MASTER_URI=http://localhost:11311
+#export ROS_HOSTNAME=localhost
+# <ROS local network setup>
+
+
+# <ROS remote network setup>
+#export ROS_MASTER_URI=http://172.16.13.37:11311
+#export ROS_IP=172.16.13.47
+#export ROS_IP=`ifconfig wlan0 | grep "inet addr" | awk -F: '{print $2}' | awk '{print $1}'`
+# <ROS remote network setup>
+
+
+# <ROS setup>
+source /opt/ros/jade/setup.bash
+# </ROS setup>
+
+
+# <ROS catkin setup>
+catkin_ws_dir='catkin_ws'
+source $HOME/${catkin_ws_dir}/devel/setup.bash
+alias ctkmake='catkin_make -C $HOME/${catkin_ws_dir}'
+alias kk='catkin build -w $HOME/${catkin_ws_dir} --continue-on-failure --summarize --verbose'
+source /usr/etc/bash_completion.d/catkin_tools-completion.bash
+# </ROS catkin setup>
+
+
+# <ROS environment variables>
+export ROSCONSOLE_FORMAT='[${severity}] [${node}] [${time}]: ${message} | ${file}:${function}:${line}'
+export ROSCONSOLE_CONFIG_FILE='$HOME/.ros/config/rosconsole.config'
+export ROS_PARALLEL_JOBS='-j8 -l8'
+# </ROS environment variables>
