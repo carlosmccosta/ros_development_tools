@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<package>
+	<name>package_template</name>
+	<version>1.0.0</version>
+	<description>Package description</description>
+	<author email="carloscosta.cmcc@gmail.com">Carlos Miguel Correia da Costa</author>
+	<maintainer email="carloscosta.cmcc@gmail.com">Carlos Miguel Correia da Costa</maintainer>
+	<license>BSD</license>
+
+
+
+	<!-- ################################################################## -->
+	<!-- Build system -->
+	<!-- ################################################################## -->
+
+	<!-- if using catkin -->
+	<buildtool_depend>catkin</buildtool_depend>
+	
+	<!-- if using cmake only -->
+	<!-- <buildtool_depend>cmake</buildtool_depend>
+	<buildtool_depend>pkg-config</buildtool_depend>
+	<run_depend>catkin</run_depend> -->
+
+
+
+	<!-- ################################################################## -->
+	<!-- Build dependencies -->
+	<!-- ################################################################## -->
+
+	<build_depend>roscpp</build_depend>
+	<build_depend>rosconsole</build_depend>
+
+
+
+	<!-- ################################################################## -->
+	<!-- Run dependencies -->
+	<!-- ################################################################## -->
+
+	<run_depend>roscpp</run_depend>
+	<run_depend>rosconsole</run_depend>
+
+
+
+	<!-- if using cmake only -->
+	<!-- <export>
+    	<build_type>cmake</build_type>
+  	</export> -->
+
+</package>

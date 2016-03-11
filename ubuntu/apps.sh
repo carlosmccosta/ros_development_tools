@@ -28,6 +28,7 @@ sudo add-apt-repository ppa:romain-janvier/cloudcompare -y # latest cloudcompare
 sudo add-apt-repository ppa:nilarimogard/webupd8 -y # for pulseaudio-equalizer
 sudo add-apt-repository ppa:kazam-team/stable-series -y # desktop recording
 sudo add-apt-repository ppa:irie/blender -y # 3d modeling
+sudo add-apt-repository ppa:inkscape.dev/stable -y
 sudo add-apt-repository ppa:otto-kesselgulasch/gimp -y
 sudo add-apt-repository ppa:shutter/ppa -y # desktop screenshots
 sudo sh -c "echo 'deb http://archive.canonical.com/ubuntu/ $(lsb_release -sc) partner' >> /etc/apt/sources.list.d/canonical_partner.list" # Skype
@@ -140,6 +141,7 @@ sudo apt-get install vlc browser-plugin-vlc -y
 sudo apt-get install totem-plugins-extra
 sudo apt-get install kazam -y
 sudo apt-get install shutter -y
+sudo apt-get install inkscape -y
 sudo apt-get install gimp gimp-data gimp-data-extras gimp-plugin-registry -y
 sudo apt-get install blender -y
 
