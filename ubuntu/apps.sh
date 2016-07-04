@@ -100,9 +100,9 @@ then
 	sudo apt-get install texinfo -y
 	mkdir -p ~/gdb
 	cd ~/gdb
-	wget http://ftp.gnu.org/gnu/gdb/gdb-7.11.tar.gz
-	tar xfv gdb-7.11.tar.gz
-	cd gdb-7.11
+	wget http://ftp.gnu.org/gnu/gdb/gdb-7.11.1.tar.gz
+	tar xfv gdb-7.11.1.tar.gz
+	cd gdb-7.11.1
 	./configure --prefix=/usr
 	make
 	sudo make install
