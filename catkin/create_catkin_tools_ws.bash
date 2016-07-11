@@ -30,5 +30,5 @@ AddProfile release Release ${extend_ws}
 
 echo -e "\n\n"
 echo "----------------------------------------------------------------------------------------------------"
-echo ">>>>> catkin workspace initilized"
+echo ">>>>> catkin workspace initialized"
 echo "----------------------------------------------------------------------------------------------------"
