@@ -61,6 +61,11 @@ sudo add-apt-repository ppa:indicator-brightness/ppa -y
 sudo add-apt-repository ppa:webupd8team/nemo -y
 
 
+# >>>>> Dark themes
+# http://www.ravefinity.com/p/vivacious-colors-gtk-theme.html
+# https://github.com/horst3180/Arc-theme
+
+
 # >>>>> Dropbox
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 sudo add-apt-repository "deb http://linux.dropbox.com/ubuntu $(lsb_release -sc) main" -y
@@ -116,8 +121,8 @@ sudo apt-get install ccache -y
 sudo apt-get install colorgcc -y
 sudo apt-get install oracle-java8-installer -y
 sudo apt-get install sublime-text-installer -y
-sudo apt-get install meshlab
-sudo apt-get install cloudcompare
+sudo apt-get install meshlab -y
+sudo apt-get install cloudcompare -y
 
 
 # +++ VCS
@@ -167,6 +172,7 @@ sudo apt-get install dropbox -y
 
 # >>>>> OS tools
 sudo apt-get install synaptic -y
+sudo apt-get install disper -y # switch monitors
 sudo apt-get install terminator -y
 sudo apt-get install nemo nemo-fileroller nemo-terminal nemo-media-columns nemo-gtkhash nemo-copypaste-images nemo-rabbitvcs nemo-compare nemo-seahorse nemo-audio-tab -y
 sudo apt-get install ntp -y
@@ -196,6 +202,8 @@ sudo apt-get install cpufrequtils -y
 sudo apt-get install sysstat -y
 sudo apt-get install htop -y
 sudo apt-get install iotop -y
+sudo apt-get install lm-sensors -y # after install run -> sudo sensors-detect
+sudo apt-get install psensor -y
 #sudo apt-get install monitorix -y
 sudo apt-get install python-pip -y
 #sudo pip install Glances
