@@ -59,6 +59,7 @@ sudo add-apt-repository ppa:danielrichter2007/grub-customizer -y # grub customiz
 sudo add-apt-repository ppa:freefilesync/ffs -y # freefilesync
 sudo add-apt-repository ppa:indicator-brightness/ppa -y
 sudo add-apt-repository ppa:webupd8team/nemo -y
+sudo add-apt-repository ppa:wireshark-dev/stable -y
 
 
 # >>>>> Dark themes
@@ -180,6 +181,7 @@ sudo /etc/init.d/ntp reload
 sudo apt-get install ubuntu-tweak -y
 sudo apt-get install indicator-multiload -y
 sudo apt-get install indicator-cpufreq -y
+sudo apt-get install wireshark -y
 sudo apt-get install unity-tweak-tool gnome-tweak-tool -y
 sudo apt-get install tlp tlp-rdw -y
 sudo tlp start
