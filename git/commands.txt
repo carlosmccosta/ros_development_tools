@@ -1,0 +1,97 @@
+----------------------------------------------
+-- configs
+
+git config --global user.name "Your Name"
+git config --global user.email you@yourdomain.com
+git config --global branch.autosetuprebase true
+git config --global pull.rebase true
+git config --global rebase.autostash true
+git config --global merge.tool meld
+git config --global diff.tool meld
+
+
+
+----------------------------------------------
+-- ignore chmod changes
+
+git config --global core.filemode false
+
+
+
+----------------------------------------------
+-- list_status_of_folder_with_repositories
+
+find -L . -maxdepth 1 -mindepth 1 -type d -exec sh -c "(echo {} && cd {} && git status -s && echo)" \;
+
+
+
+----------------------------------------------
+-- remove commited files last commit
+
+git reset HEAD^ -- file_with_path
+git commit --amend -m "Message"
+#git filter-branch --tag-name-filter cat --index-filter 'git rm -r --cached --ignore-unmatch filename' --prune-empty -f -- --all 
+git reflog expire --expire=now --all
+git gc --prune=now
+git gc --aggressive --prune=now
+
+
+
+---------------------------------------------
+-- remove last commit
+
+git reset --hard HEAD~1
+git push origin HEAD --force
+
+
+
+---------------------------------------------
+-- stash uncommited changes
+
+git stash save "name"
+git stash list
+git stash pop/apply stash@{n}
+
+
+
+---------------------------------------------
+-- fix conflicts
+
+git mergetool
+git rebase --continue
+
+# list conflict files
+git diff --name-only --diff-filter=U
+
+
+
+---------------------------------------------
+-- duplicate branch
+
+git checkout -b new_branch old_branch
+
+
+
+---------------------------------------------
+-- compare checkout branch
+
+git difftool --dir-diff other_branch
+git difftool -d stash@{0}
+
+
+
+---------------------------------------------
+-- clone github organization
+
+USER=Itseez;PAGE=1; curl "https://api.github.com/users/$USER/repos?page=$PAGE&per_page=100" | grep -e 'git_url*' | cut -d \" -f 4 | xargs -L1 git clone
+
+
+
+---------------------------------------------
+-- sync branch / fork
+
+git checkout master
+git fetch upstream
+git rebase upstream/master
+git checkout branch
+git merge/rebase master

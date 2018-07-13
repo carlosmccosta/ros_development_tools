@@ -1,0 +1,87 @@
+-----------------------------------
+-- delete commits
+add to .hgrc
+[extensions]
+mq = 
+
+hg strip commit
+
+
+
+-----------------------------------
+-- remove last commit of a given brancg
+hg strip my_pruned_branch
+
+
+
+-----------------------------------
+-- edit last commit author
+hg phase --draft --force .
+hg ci --amend --user "Carlos Costa <carloscosta.cmcc@gmail.com>" -X "**"
+hg push -f
+
+
+
+-----------------------------------
+-- move commits
+tortoise hg
+	create branch
+	select commits -> graft to local
+	strip base commit from the original branch
+
+
+-----------------------------------
+-- rebase
+hg up feature-branch
+hg phase --draft --force .
+hg phase --draft --force ID
+hg rebase --dest default --keepbranches
+
+
+
+-----------------------------------
+-- upstream pull
+hg pull <upstream remote in hgrc>
+hg update
+
+
+
+-----------------------------------
+-- compare branches
+hg extdiff -p meld -r branch1:branch2
+
+
+
+-----------------------------------
+-- check which branch is checked out
+
+hg identify -b
+
+
+
+-----------------------------------
+-- list branches
+
+hg branches --active
+
+
+
+-----------------------------------
+-- list last commits
+
+hg log --limit 5
+
+
+
+-----------------------------------
+-- stash uncommited changes
+hg shelve --name <name>
+
+-- view shelve
+hg shelve -l
+
+-- show shelve diff
+hg shelve -l shelve_name
+
+-- apply shelve
+hg unshelve --keep shelve_name

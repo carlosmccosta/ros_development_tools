@@ -1,0 +1,11 @@
+# connect
+nmcli connection up [name]
+
+# check connections configurations
+nmcli device show
+
+# check networks interfaces
+ifconfig
+
+# check routing
+route -n
