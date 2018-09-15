@@ -38,3 +38,7 @@ sudo chmod 755 /etc/cron.daily/ntpdate
 
 # add ssh key to remote server
 cat ~/.ssh/id_rsa.pub | ssh user@hostname 'cat >> .ssh/authorized_keys'
+
+# change permissions
+find . -type d -exec chmod 755 {} ";"
+

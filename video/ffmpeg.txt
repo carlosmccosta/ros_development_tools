@@ -1,0 +1,2 @@
+# Merge videos left and right
+ffmpeg -i left.mp4 -i right.mp4 -filter_complex "[0:v][1:v]hstack=inputs=2[v]" -map "[v]" output.mp4
