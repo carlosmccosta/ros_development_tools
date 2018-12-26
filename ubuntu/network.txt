@@ -9,3 +9,6 @@ ifconfig
 
 # check routing
 route -n
+
+# set interface priority
+sudo ifmetric wlan0 50
