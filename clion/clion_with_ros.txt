@@ -1,0 +1,4 @@
+http://wiki.ros.org/IDEs#CLion
+https://www.jetbrains.com/help/clion/ros-setup-tutorial.html
+https://www.jetbrains.com/help/clion/attaching-to-local-process.html
+https://github.com/duckietown/hatchery
