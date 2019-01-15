@@ -1,4 +1,38 @@
 -----------------------------------
+-- upstream pull
+hg pull <upstream remote in hgrc>
+hg update
+
+
+
+-----------------------------------
+-- rebase
+hg up feature-branch
+hg rebase --dest default --keepbranches
+
+# For pushing commits that were already on the remote, they must be marked as draft
+hg phase --draft --force id_of_oldest_commit_that_was_changed
+hg push --force
+
+# After the rebase + force push, there will be one head in the local repository but two on bitbucket (the one before and the one after the rebase)
+# To avoid multiple heads in a branch and have the latest one being used in a pull request
+# A - Clone the remote repository and close the old head
+hg clone ...
+hg up feature-branch
+hg heads .
+hg up id_of_head_before_rebase
+hg commit --close-branch -m "Closing this head"
+hg heads .
+hg up id_of_head_after_rebase
+hg push --force
+
+# B - Use bitbucket strip in repository settings (not recommended since it will delete the old commits)
+
+# After closing the old head and editing the pull request, the latest head will be used for the PR
+
+
+
+-----------------------------------
 -- delete commits
 add to .hgrc
 [extensions]
@@ -9,7 +43,7 @@ hg strip commit
 
 
 -----------------------------------
--- remove last commit of a given brancg
+-- remove last commit of a given branch
 hg strip my_pruned_branch
 
 
@@ -30,21 +64,6 @@ tortoise hg
 	strip base commit from the original branch
 
 
------------------------------------
--- rebase
-hg up feature-branch
-hg phase --draft --force .
-hg phase --draft --force ID
-hg rebase --dest default --keepbranches
-
-
-
------------------------------------
--- upstream pull
-hg pull <upstream remote in hgrc>
-hg update
-
-
 
 -----------------------------------
 -- compare branches
@@ -54,27 +73,28 @@ hg extdiff -p meld -r branch1:branch2
 
 -----------------------------------
 -- check which branch is checked out
-
 hg identify -b
 
 
 
 -----------------------------------
 -- list branches
-
 hg branches --active
 
 
 
 -----------------------------------
 -- list last commits
-
 hg log --limit 5
 
 
+-----------------------------------
+-- list heads in current branch
+hg heads .
+
 
 -----------------------------------
--- stash uncommited changes
+-- stash uncommitted changes
 hg shelve --name <name>
 
 -- view shelve
