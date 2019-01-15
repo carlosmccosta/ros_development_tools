@@ -34,10 +34,12 @@ hg push --force
 
 -----------------------------------
 -- delete commits
-add to .hgrc
+# add to .hgrc
 [extensions]
+strip =
 mq = 
 
+# remove commit
 hg strip commit
 
 
