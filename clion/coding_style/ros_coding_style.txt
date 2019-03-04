@@ -1,0 +1,4 @@
+http://wiki.ros.org/CppStyleGuide
+https://google.github.io/styleguide/cppguide.html
+http://wiki.ros.org/ROS/Patterns/Conventions
+http://wiki.ros.org/DevelopersGuide

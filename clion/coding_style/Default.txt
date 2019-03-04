@@ -1,0 +1,16 @@
+CLion -> File -> Settings -> Editor -> Code Style -> C++ -> Gear -> Import Scheme -> XML
+
+Deviations / improvements in relation to ROS CppStyleGuide:
+- Code indentation using tabs instead of 2 spaces
+    * This way, you can easily change the visible indentation of the code -> some people like 2 spaces, others like 4, ...)
+- Function parameters have an underscore prefix (_function_parameter)
+    * This way it is clear the scope of a variable:
+        local_stack_variable
+        _function_parameter
+        class_member_
+    * Support for this will be added in CLion 2019.1
+        https://blog.jetbrains.com/clion/2019/02/clion-2019-1-eap-naming-conventions/
+- Curly braces on same line as the statement
+    * Allows more compact code -> less scrolling
+- Larger line length wrap (250 instead of 120)
+    * Programmers usually code on 27+ inches monitors, so larger lines means more compact code -> less scrolling

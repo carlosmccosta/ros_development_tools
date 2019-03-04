@@ -1,0 +1,1 @@
+CLion -> File -> Settings -> Editor -> File and Code Templates -> [Files | Includes]
