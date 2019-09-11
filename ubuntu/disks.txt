@@ -1,0 +1,26 @@
+# List disks
+sudo fdisk -l
+
+
+# Scan partition for damaged blocks:
+sudo badblocks -svn /dev/sdXX > /tmp/bad-blocks.txt
+
+
+# Tell OS to not use the bad blocks
+sudo e2fsck -l /tmp/bad-blocks.txt  /dev/sdXX
+
+
+# Check ext4 partition (make sure it is not mounted first):
+unmount /dev/sdXX
+e2fsck -vf /dev/sdXX
+
+
+# For checking root partitions either:
+
+1 - Run:
+shutdown -Fr now
+
+2 - Create the file:
+touch /forcefsck
+
+3 - During the grub boot go to advanced options, start in recovery mode and then run fsck
