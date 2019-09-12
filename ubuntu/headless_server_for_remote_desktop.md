@@ -6,7 +6,7 @@ For running a headless server without a monitor connected, it is necessary to en
 ## First, install the dummy monitor driver:
 
 ```
-sudo apt install server-xorg-video-dummy-hwe-18.04
+sudo apt install xserver-xorg-video-dummy-hwe-18.04
 ```
 
 
