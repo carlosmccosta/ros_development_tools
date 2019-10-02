@@ -19,7 +19,7 @@ sudo apt-get install dpkg-dev debhelper
 
 * For public release using the ROS build farm, read [this tutorial](http://wiki.ros.org/bloom/Tutorials/FirstTimeRelease)
 
-* For generating .deb files for packages that have dependencies to packages that are not on the official rosdep lists, read the [rosdep documentation](http://docs.ros.org/independent/api/rosdep/html/contributing_rules.html) and [this discussion](https://answers.ros.org/question/280213/generate-deb-from-dependent-res-package-locally/), that overall state that you need to:
+* For generating .deb files for packages that have dependencies to packages that are not on the official rosdep lists, read the [rosdep documentation](http://docs.ros.org/independent/api/rosdep/html/contributing_rules.html) and [this readme file](https://github.com/mikeferguson/buildbot-ros/blob/master/documentation/private_repositories.md), that overall state that you need to:
   * Create a yaml file (in the workspace containing the packages, for example) specifying the local packages. Example of yaml content:
     ```
     package_name:
