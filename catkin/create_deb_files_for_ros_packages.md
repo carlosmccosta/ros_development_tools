@@ -58,11 +58,22 @@ sudo apt-get install dpkg-dev debhelper
   ```
   rosdep db | grep package_name
   ```
-* Generate .deb file with [-O2 optimizations](http://wiki.ros.org/bloom/Tutorials/ChangeBuildFlags)
+* Generate the configuration files using:
   ```
   bloom-generate rosdebian --ros-distro $(rosversion -d)
+  ```
+* Generate .deb file with [-O2 optimizations](http://wiki.ros.org/bloom/Tutorials/ChangeBuildFlags)
+  ```
   fakeroot debian/rules binary
   ```
+  * For speeding up the compilation, you can specify how many CPU cores will be used by the make program, using:
+    ```
+    export DEB_BUILD_OPTIONS="parallel=`nproc`"
+    ```
+  * Then, instead of using the default rules script above, use:
+    ```
+    fakeroot debian/rules "binary --parallel"
+    ```
 
 * The deb file will be added to the package parent directory
 
