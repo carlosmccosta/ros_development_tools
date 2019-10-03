@@ -42,6 +42,7 @@ sudo apt-get install dpkg-dev debhelper
     rosdep resolve package_name
     ```
 
+
 ### Generate .deb file
 
 * Setup the ROS environment variables by sourcing the setup.bash script from your catkin_ws
@@ -83,7 +84,22 @@ sudo apt-get install dpkg-dev debhelper
 sudo dpkg -i path_to_package.deb
 ```
 
+
 ### Update package list
 ```
 rospack profile
 ```
+
+
+### Notes
+
+For making sure that the packages for which you are generating .deb files grab the the same library versions of other packages that have associated .deb files, you should follow this approach:
+* Enumerate the packages that you want to generate .deb files
+* Sort them in the proper order for following their compilation dependencies
+* Create the rosdep yaml file specifying the configurations for all the packages that you want to generate .deb files
+* Add the .yaml file to the rosdep sources list (check instructions above)
+* Then, do the following for each package:
+  * source /opt/ros/$(rosversion -d)/setup.bash
+  * rospack profile
+  * Generate the .deb file using the instructions above
+  * Install the .deb file using "sudo dpkg -i path_to_package.deb"
