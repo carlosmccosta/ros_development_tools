@@ -91,14 +91,34 @@ rospack profile
 ```
 
 
-### Notes
+### Notes about pre-release steps
 
-For making sure that the packages for which you are generating .deb files grab the the same library versions of other packages that have associated .deb files, you should follow this approach:
-* Enumerate the packages that you want to generate .deb files
-* Sort them in the proper order for following their compilation dependencies
-* Create the rosdep yaml file specifying the configurations for all the packages that you want to generate .deb files
+For allowing the end users to know which commit was used to generate each .deb file, you should:
+* Modify the [package.xml version tag](https://www.ros.org/reps/rep-0140.html#version) of each package following the [semantic versioning](https://semver.org/) approach
+  * Check [this tutorial](http://wiki.ros.org/bloom/Tutorials/ReleaseCatkinPackage) if you want to release your package into the ROS build farm
+* Create a changelog and commit any remaining changes to each package git repository
+* Create a release tag in the git repository of each package
+
+
+### Notes about compilation of .deb files with dependencies to other .deb files
+
+For making sure that the packages for which you are generating .deb files are compiling and linking to the same library versions of other packages that have associated .deb files, you should follow this approach:
+* Create a list with the packages for which you want to generate .deb files
+* Check their dependencies using:
+  * [rqt_dep](http://wiki.ros.org/rqt_dep)
+  * [rosdep](https://docs.ros.org/independent/api/rosdep/html/commands.html):
+    ```
+    rosdep keys package_name_1 package_name_2 package_name_3
+    ```
+* Sort the packages in the proper order for following their compilation dependencies. For automating this step you can use [catkin tools](https://catkin-tools.readthedocs.io/en/latest/verbs/catkin_build.html#previewing-the-build):
+    ```
+    catkin build --dry-run package_name_1 package_name_2 package_name_3
+    ```
+* Create the rosdep .yaml file specifying the configurations for all the packages that you want to generate .deb files
 * Add the .yaml file to the rosdep sources list (check instructions above)
 * Then, do the following for each package:
+  * cd package_folder
+  * git checkout release_tag
   * source /opt/ros/$(rosversion -d)/setup.bash
   * rospack profile
   * Generate the .deb file using the instructions above
