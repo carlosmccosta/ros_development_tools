@@ -84,6 +84,28 @@ sudo apt-get install dpkg-dev debhelper
 sudo dpkg -i path_to_package.deb
 ```
 
+Be aware that if you install pure CMake packages that were packaged as ROS packages and were installed into /opt/ros, they will override the system packages with the same name and version after you source the ROS setup.bash.
+
+This approach can be useful for development purposes (project forks for example), in which the system installation of a package remains untouched (PCL for example) and a development version is built and prereleased as a ROS package for making it easier to install by end users.
+
+However, this should be used with care, because if certain packages are expecting an oficial library .so and then at run time they find an .so that does not have a [compatible ABI](https://gcc.gnu.org/onlinedocs/libstdc++/manual/abi.html) (because the ROS setup.bash changed the [LD_LIBRARY_PATH](http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html)) and the .so of the fork in /opt/ros was loaded instead of the one at /usr/lib), the program will terminate.
+
+
+### Uninstall .deb file
+
+If later on you need to remove the .deb package, you can find its full name using:
+```
+apt-cache search partial-package-name
+```
+And remove it with:
+```
+sudo apt purge package-name
+# or
+sudo dpkg --purge package-name
+```
+
+Alternatively you can use the [Synaptic GUI](https://help.ubuntu.com/stable/ubuntu-help/addremove-install-synaptic.html.en).
+
 
 ### Update package list
 ```
