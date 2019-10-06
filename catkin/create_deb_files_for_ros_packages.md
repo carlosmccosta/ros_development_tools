@@ -90,6 +90,8 @@ This approach can be useful for development purposes (project forks for example)
 
 However, this should be used with care, because if certain packages are expecting an oficial library .so and then at run time they find an .so that does not have a [compatible ABI](https://gcc.gnu.org/onlinedocs/libstdc++/manual/abi.html) (because the ROS setup.bash changed the [LD_LIBRARY_PATH](http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html)) and the .so of the fork in /opt/ros was loaded instead of the one at /usr/lib), the program will terminate.
 
+Check the tutorial at [ubuntu/libraries.md](../ubuntu/libraries.md) for more information.
+
 
 ### Uninstall .deb file
 
