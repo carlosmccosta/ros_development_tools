@@ -88,6 +88,7 @@ xhost +local:
 # Remote desktop GUIs
 
 For connecting to the headless server, several GUI clients are available:
+* [AnyDesk](https://anydesk.com/)
 * [TeamViewer](https://www.teamviewer.com)
 * [NoMachine](https://www.nomachine.com)
 * [Remmina](https://remmina.org/)
