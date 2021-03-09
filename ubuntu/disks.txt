@@ -2,7 +2,7 @@
 sudo fdisk -l
 
 
-# Scan partition for damaged blocks:
+# Scan partition for damaged blocks
 sudo badblocks -svn /dev/sdXX > /tmp/bad-blocks.txt
 
 
@@ -10,28 +10,35 @@ sudo badblocks -svn /dev/sdXX > /tmp/bad-blocks.txt
 sudo e2fsck -l /tmp/bad-blocks.txt  /dev/sdXX
 
 
-# Check ext4 partition (make sure it is not mounted first):
+# Check ext4 partition (make sure it is not mounted first)
 unmount /dev/sdXX
 e2fsck -vf /dev/sdXX
 
 
-# For checking root partitions either:
-
+# Check root partitions
 1 - Run:
 shutdown -Fr now
-
 2 - Create the file:
 touch /forcefsck
-
 3 - During the grub boot go to advanced options, start in recovery mode and then run fsck
 
 
-# For finding file names with invalid windows characters:
-
+# Find files with names containing invalid Windows characters:
 find . -name '*[<>:"/\\|?*%]*' -o -name '*[ \.]' -o -name '[ ]*'
 find . | grep -P "[\x00-\x1F]"
 
 
-# For finding duplicate files without taking into consideration the character case
-
+# Find duplicate files without taking into consideration the character case
 find . | sort -f | uniq -i -d
+
+
+# Find symbolic links
+find . -type l
+
+
+# Find hard links and their original files
+find . -links +1
+
+
+# Find all files associated with a hard link
+find . -samefile /path/to/file
