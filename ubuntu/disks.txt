@@ -24,3 +24,14 @@ shutdown -Fr now
 touch /forcefsck
 
 3 - During the grub boot go to advanced options, start in recovery mode and then run fsck
+
+
+# For finding file names with invalid windows characters:
+
+find . -name '*[<>:"/\\|?*%]*' -o -name '*[ \.]' -o -name '[ ]*'
+find . | grep -P "[\x00-\x1F]"
+
+
+# For finding duplicate files without taking into consideration the character case
+
+find . | sort -f | uniq -i -d
