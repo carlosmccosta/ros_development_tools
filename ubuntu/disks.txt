@@ -42,3 +42,7 @@ find . -links +1
 
 # Find all files associated with a hard link
 find . -samefile /path/to/file
+
+
+# Find files with more than a given path size
+find -regextype posix-extended -regex '.{255,}'
