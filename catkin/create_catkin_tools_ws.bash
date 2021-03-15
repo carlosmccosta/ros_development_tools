@@ -13,7 +13,7 @@ function AddProfile {
 	catkin config --profile $1 -x _$1 --cmake-args -DCMAKE_BUILD_TYPE=$2
 	catkin profile set $1
 	catkin config --extend $3
-	catkin config --append-args --cmake-args -DCMAKE_CXX_FLAGS="-Wall -W -Wno-unused-parameter"
+	catkin config --append-args --cmake-args -DCMAKE_CXX_FLAGS="-Wall -W -Wno-unused-parameter -Werror=return-type"
 }
 
 
