@@ -27,6 +27,8 @@ touch /forcefsck
 find . -name '*[<>:"/\\|?*%]*' -o -name '*[ \.]' -o -name '[ ]*'
 find . | grep -P "[\x00-\x1F]"
 
+# Find files with characters not typical for Portuguese language
+find . | grep -P "[^\x20\x28\x29\x2b-\x39\x41-\x5a\x5f\x61-\x7a\xba\xc0-\xc3\xc7-\xca\xcc-\xce\xd2-\xd5\xd9-\xdb\xe0-\xe3\xe7-\xea\xec-\xee\xf2-\xf5\xf9-\xfb]"
 
 # Find duplicate files without taking into consideration the character case
 find . | sort -f | uniq -i -d
@@ -46,3 +48,6 @@ find . -samefile /path/to/file
 
 # Find files with more than a given path size
 find -regextype posix-extended -regex '.{255,}'
+
+# Find files with more than a given filename size
+find | egrep '/[^/]{255,}$'
