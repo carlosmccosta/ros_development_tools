@@ -47,7 +47,19 @@ find . -samefile /path/to/file
 
 
 # Find files with more than a given path size
-find -regextype posix-extended -regex '.{255,}'
+find -regextype posix-extended -regex '.{242,}'
 
 # Find files with more than a given filename size
-find | egrep '/[^/]{255,}$'
+find | egrep '/[^/]{242,}$'
+
+
+# Sort file paths in file by their length
+cat paths.txt | awk '{ print length, $0 }' | sort -n | cut -d" " -f2- > paths_sorted.txt
+
+
+# Hash folder
+find /path/to/dir/ -type f -exec sha512sum {} \; | sha512sum
+
+
+# Count files recursively
+find /path/to/dir/ -type f | wc -l
