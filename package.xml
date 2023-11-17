@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="2">
+
+  <name>ros_development_tools</name>
+  <version>1.0.0</version>
+  <description>Collection of tools and guides targeted for developing ROS nodes</description>
+  <author email="carloscosta.cmcc@gmail.com">Carlos Miguel Correia da Costa</author>
+  <maintainer email="carloscosta.cmcc@gmail.com">Carlos Miguel Correia da Costa</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>
