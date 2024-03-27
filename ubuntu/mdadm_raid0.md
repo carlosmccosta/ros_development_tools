@@ -61,12 +61,36 @@ update-grub
 
 ## Filesystem check at boot
 
-For forcing the EXT4 filesystem check at every boot:
+https://www.baeldung.com/linux/force-file-system-check-every-boot
 
+Edit the `/etc/fstab` file and make sure the partitions you want to check have the `fs_passno` with number 1 or 2.
+
+Example (fs_passno is the last number):
+```
+UUID=2e5d42e1-c6d4-4120-b14d-dd712061f957 /               ext4    errors=remount-ro 0       1
+```
+
+Edit the parameter `GRUB_CMDLINE_LINUX_DEFAULT` in file `/etc/default/grub` and add at the end the fsck options:
+```
+sudo nano /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash fsck.mode=force fsck.repair=yes"
+```
+
+Then,
+```
+sudo update-grub
+```
+
+Alternative to using the grub parameters:
 ```
 sudo tune2fs -c 1 /dev/md0p1
 ```
 
+Check fsck logs with:
+```
+sudo more /run/initramfs/fsck.log
+journalctl -u systemd-fsck*
+```
 
 
 ## NVIDIA
