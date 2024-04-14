@@ -1,13 +1,43 @@
 # List disks
 sudo fdisk -l
+lsblk
 
 
 # Scan partition for damaged blocks
-sudo badblocks -svn /dev/sdXX > /tmp/bad-blocks.txt
+sudo badblocks -svn /dev/nvme0n1pX > /tmp/bad-blocks.txt
 
 
 # Tell OS to not use the bad blocks
-sudo e2fsck -l /tmp/bad-blocks.txt  /dev/sdXX
+sudo e2fsck -l /tmp/bad-blocks.txt /dev/nvme0n1pX
+
+Disks have spare blocks that are swapped automatically by the disk firmware.
+As such, badblocks may report 0 bad blocks in the last scan, but the drive may have detected and replaced many bad blocks.
+For checking that, its necessary to analyze the the available_spare and percentage_used fields reported by the drive using the nvme or smartctl commands.
+
+
+# Check NVME
+
+sudo apt-get install nvme-cli
+sudo nvme smart-log /dev/nvme0
+sudo nvme error-log /dev/nvme0
+
+https://www.nvmetools.com/post/nvme-health
+
+The wear level is given by the percentage_used.
+Percentage of replacement blocks is given in available_spare.
+When reaching below available_spare_threshold, the ssh is close to failure.
+
+
+# Check smart data
+https://help.ubuntu.com/community/Smartmontools
+sudo apt install smartmontools
+udo apt install gsmartcontrol
+
+sudo smartctl -i /dev/sda # check smart data capability
+sudo smartctl -s /dev/sda # enable smart data
+sudo smartctl -a /dev/sda # view smart data
+sudo smartctl -c /dev/sda # check how long the test takes
+sudo smartctl -t long /dev/sda # test drive
 
 
 # For forcing the EXT4 filesystem check at every boot:
@@ -26,7 +56,7 @@ Then,
 sudo update-grub
 
 Alternative to using the grub parameters:
-sudo tune2fs -c 1 /dev/sdXX
+sudo tune2fs -c 1 /dev/nvme0
 
 
 # Check fsck log
@@ -35,8 +65,12 @@ journalctl -u systemd-fsck*
 
 
 # Check ext4 partition (make sure it is not mounted first)
-unmount /dev/sdXX
-e2fsck -vf /dev/sdXX
+unmount /dev/nvme0n1pX
+e2fsck -vf /dev/nvme0n1pX
+
+
+# Check fat32 (make sure it is not mounted first)
+sudo dosfsck -w -r -l -a -v -t /dev/nvme0n1pX
 
 
 # Check root partitions
